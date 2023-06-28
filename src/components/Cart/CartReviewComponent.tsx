@@ -33,7 +33,7 @@ const CartReviewComponent: React.FC<Props> = ({ cart }) => {
                     { cart.products.map((p) => {
                         return (
                                 <tr key={p.product._id}>
-                                    <td><Image width="60" src={p.product.thumbnail} className='m-auto rounded-xl my-2' /></td>
+                                    <td><Image width="60" src={p.product.thumbnail} className='m-auto rounded-xl my-2' alt='product image'/></td>
                                     <th scope="row"> {p.product.description} </th>
                                     <td>$ {p.product.price}</td>
                                     <td>{p.quantity}</td>

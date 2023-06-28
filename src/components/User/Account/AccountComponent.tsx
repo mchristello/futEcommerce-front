@@ -23,10 +23,10 @@ const AccountComponent: React.FC<Prop> = ({ user }) => {
                                 <div>
                                     <h3 className="text-3xl mb-4 font-bold tracking-tight text-gray-900 dark:text-white underline" >Welcome, {user.first_name} !</h3>
                                     { user.rol === 'admin'  
-                                        ? <h5 className="m-4 text-2xl" >It's nice to see an admin arround. 😁</h5>
+                                        ? <h5 className="m-4 text-2xl" >It is nice to see an admin arround. 😁</h5>
                                         : <h5 className="m-4 text-2xl" > Nice to see you again!</h5> 
                                     }
-                                    <h4 className="m-4" >Here's your info. ⬇️</h4>
+                                    <h4 className="m-4" >Here is your info. ⬇️</h4>
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-900" >E-mail: <i>{user.email}</i></p>
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-900" >Name: <i>{user.first_name}</i></p>
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-900" ><small className="font-extralight">Your rol: {user.rol}.</small></p>

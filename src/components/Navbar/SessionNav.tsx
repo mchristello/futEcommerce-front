@@ -11,6 +11,7 @@ const SessionNav: React.FC = () => {
 
     const { data: session } = useSession()
     const [ cart , setCart ] = useState([])
+    const [ isCartOpen, setIsCartOpen ] = useState<boolean>(false)
 
     useEffect(() => {
         try {
@@ -33,11 +34,10 @@ const SessionNav: React.FC = () => {
         } catch (error:any) {
             console.log(`ERROR EN USE EFFECT DE SESSIONNAV`, error);
         }
-    }, [session, setCart])
+    }, [session, setCart, cart])
     
     console.log(cart);
 
-    const [ isCartOpen, setIsCartOpen ] = useState<boolean>(false)
 
     const handleMouseOver = () => {
         setIsCartOpen(true)
