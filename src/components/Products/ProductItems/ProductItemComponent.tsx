@@ -6,7 +6,7 @@ import Link from "next/link";
 type Props = {
     products: Product[]
 }
-const ProductItemComponent: NextPage<Props> = ({ products }) => {
+const ProductItemComponent: React.FC<Props> = ({ products }) => {
 
     return (
         <>

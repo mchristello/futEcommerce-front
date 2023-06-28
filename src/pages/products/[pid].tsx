@@ -20,8 +20,6 @@ const onAdd = (num: number) => {
 
 const Productdetail: NextPage<Props> = ({ product }) => {
 
-    // console.log(`PRODUCTO DESDE DETAIL`, product);
-
     return (
         // <>
         //     <div className="flex justify-center items-evenly h-full w-[1000px] bg-white gap-4 border-2">

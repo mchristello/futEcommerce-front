@@ -2,22 +2,17 @@ import { Inter } from 'next/font/google'
 import { GetServerSideProps, NextPage } from 'next';
 import { Product } from "interfaces/interfaces";
 import { connectBack } from 'utils/serverConnection';
-import ProductsList from './products/productsList';
 import Head from 'next/head';
 import PaginationComponent from 'components/Products/Pagination/PaginationComponent';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ProductsListComponent from 'components/Products/ProductList/ProductListComponent';
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 type Props = {
   initialProducts: Product[]
-  totalPages: number
-}
-
-type RequestType = {
-  payload: Product[]
   totalPages: number
 }
 
@@ -67,7 +62,7 @@ const Home: NextPage<Props> = ({ initialProducts, totalPages }) => {
         <title>eCommerce °° by M.Ch. °°</title>
       </Head>
       <main className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`} >
-        <ProductsList products={products}/>
+        <ProductsListComponent products={products}/>
         <PaginationComponent 
           totalPages={totalPages}
           currentPage={currentPage}

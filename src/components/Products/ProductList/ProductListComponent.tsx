@@ -7,7 +7,7 @@ type Props = {
     products: Product[];
 }
 
-const ProductsListComponent: NextPage<Props> = ({ products }) => {
+const ProductsListComponent: React.FC<Props> = ({ products }) => {
 
     return (
         <>
