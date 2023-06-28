@@ -1,6 +1,6 @@
 import { CartContextProvider, Product } from 'interfaces/interfaces';
 import { useSession } from 'next-auth/react';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { connectNextURL } from 'utils/serverConnection';
 
 type Props = {
@@ -86,7 +86,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     };
 
 
-    const utils = {
+    const data = {
         cartItems,
         addProduct,
         deleteProd,
@@ -95,7 +95,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     };
 
     return (
-        <CartContext.Provider value={( utils )} >
+        <CartContext.Provider value={( data )} >
             {children}
         </CartContext.Provider>
     )

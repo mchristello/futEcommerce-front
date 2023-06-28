@@ -39,8 +39,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
-    background: url(https://pbs.twimg.com/media/CywU32jUQAAdebF.jpg:large);
-    background-color: rgb(99, 86, 86);
+    /* background: url(https://pbs.twimg.com/media/CywU32jUQAAdebF.jpg:large); */
+    background-color: rgb(191, 190, 242);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

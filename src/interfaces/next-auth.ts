@@ -7,12 +7,14 @@ declare module "next-auth" {
             rol: string;
             token: string;
             cart: string;
+            cartId: string;
         };
     }
     interface User extends DefaultUser {
         rol: string;
         token: string;
         cart: string;
+        cartId: string;
     }
 }
 declare module "next-auth/jwt" {
@@ -21,5 +23,6 @@ declare module "next-auth/jwt" {
         rol: string;
         token: string;
         cart: string;
+        cartId: string;
     }
 }

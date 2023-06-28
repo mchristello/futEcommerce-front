@@ -1,4 +1,4 @@
-import { useCounter } from "@/hooks/useCount";
+import { useCounter } from "hooks/useCount";
 import { NextPage } from "next";
 
 type Props = {

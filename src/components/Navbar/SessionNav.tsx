@@ -17,8 +17,7 @@ const SessionNav: React.FC = () => {
         try {
             if(session && session?.user?.cart) {
                 const fetchCart = async () => {
-                    
-                    const response = await connectNextURL.get(`/carts/${session.user?.cart._id}`, {
+                    const response = await connectNextURL.get(`/carts/${session.user?.cartId}`, {
                         headers: {
                             Authorization: `Bearer ` + session.user?.token
                         }
@@ -26,19 +25,15 @@ const SessionNav: React.FC = () => {
     
                     const productsInCart = response.data.payload[0].products
                     setCart(productsInCart)
-                    console.log(`useEffect cart----------->`, cart);
-                }
 
+                }
                 fetchCart()
             }
         } catch (error:any) {
             console.log(`ERROR EN USE EFFECT DE SESSIONNAV`, error);
         }
-    }, [session, setCart, cart])
+    }, [session, setCart])
     
-    console.log(cart);
-
-
     const handleMouseOver = () => {
         setIsCartOpen(true)
     }
@@ -56,7 +51,7 @@ const SessionNav: React.FC = () => {
                 <Link href="/users/account" className="underline_effect m-4 hover:bg-neutral-300 hover:scale-125 active:bg-sky-900 focus:outline-none focus:ring focus:ring-violet-300 rounded-md w-36">
                     <li>My Account</li>
                 </Link>
-                <Link href={`/carts/${session?.user?.cart._id}`} className="underline_effect m-4 hover:bg-neutral-300 hover:scale-125 active:bg-sky-900 focus:outline-none focus:ring focus:ring-violet-300 rounded-md w-36">
+                <Link href={`/carts/${session?.user?.cartId}`} className="underline_effect m-4 hover:bg-neutral-300 hover:scale-125 active:bg-sky-900 focus:outline-none focus:ring focus:ring-violet-300 rounded-md w-36">
                     <li>My Cart</li>
                 </Link>
                 {/* <Link href="/message" className="underline_effect m-4 hover:bg-neutral-300 hover:scale-125 active:bg-sky-900 focus:outline-none focus:ring focus:ring-violet-300 rounded-md w-36">

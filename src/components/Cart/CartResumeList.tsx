@@ -2,7 +2,7 @@
 
 import { Card } from 'flowbite-react';
 import { Cart } from "interfaces/interfaces";
-import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 type Props = {
@@ -11,7 +11,9 @@ type Props = {
 
 const CartResumeList: React.FC<Props> = ({ cart }) => {
 
-    console.log(`DE CARTRESUME`, cart);
+    const { data: session } = useSession()
+
+    console.log(session?.user?.cartId);
 
     return (
         <Card>
@@ -25,16 +27,15 @@ const CartResumeList: React.FC<Props> = ({ cart }) => {
             </div>
             <ul className="my-4 space-y-3">
                 { cart.map((p) => {
-                    console.log(p);
                     return (
-                        <li key={p._id}>
+                        <li key={p.product._id}>
                             <Link
                                 className="group flex items-center rounded-lg bg-gray-50 p-3 text-base font-bold text-gray-900 hover:bg-gray-100 hover:shadow dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
-                                href={`/products/${p.products._id}`}
+                                href={`/products/${p.product._id}`}
                             >
-                                <Image src={p.products.thumbnail} alt='Product image' className="w-10" />
+                                <img src={p.product.thumbnail} alt='Product image' className="w-10" />
                                 <span className="ml-3 flex-1 whitespace-nowrap">
-                                    {p.products.description}
+                                    {p.product.description}
                                 </span>
                                 <span className="ml-3 inline-flex items-center justify-center rounded bg-gray-200 px-2 py-0.5 text-xs font-medium text-gray-500 dark:bg-gray-700 dark:text-gray-400">
                                     <p>
@@ -43,7 +44,7 @@ const CartResumeList: React.FC<Props> = ({ cart }) => {
                                 </span>
                                 <span className="ml-3 inline-flex items-center justify-center rounded bg-gray-200 px-2 py-0.5 text-xs font-medium text-gray-500 dark:bg-gray-700 dark:text-gray-400">
                                     <p>
-                                        ${p.products.price} each
+                                        ${p.product.price} each
                                     </p>
                                 </span>
                             </Link>
@@ -51,17 +52,6 @@ const CartResumeList: React.FC<Props> = ({ cart }) => {
                     )
                 })}
             </ul>
-            {/* <div>
-                <a
-                    className="inline-flex items-center text-xs font-normal text-gray-500 hover:underline dark:text-gray-400"
-                    href="#"
-                >
-                    <span />
-                    <p>
-                        Why do I need to connect with my wallet?
-                    </p>
-                </a>
-            </div> */}
         </Card>
     )
 }

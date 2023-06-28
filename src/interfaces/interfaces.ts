@@ -15,7 +15,7 @@ export interface Product {
 
 export interface Cart {
     _id: string;
-    products: Products[];
+    products: Products;
 }
 
 export interface Products {
@@ -29,20 +29,13 @@ export interface User {
     last_name: string;
     email: string;
     password: string;
-    rol: rol;
+    rol: string;
     age: number;
     social: string;
     cart: Cart["_id"];
     documents: string[];
     last_connection: Date;
 }
-
-export enum rol {
-    ADMIN = "admin",
-    USER = "user",
-    PREMIUM = "premium",
-}
-
 
 export interface Ticket {
     id: string;
@@ -66,7 +59,7 @@ export interface Paginate {
 }
 
 export interface CartContextProvider {
-    cartItems: Product[];
+    cartItems: number;
     addProduct: (pid: Product["_id"]) => AxiosResponse;
     deleteProd: (pid: Product["_id"]) => AxiosResponse;
     emptyCart: () => AxiosResponse;

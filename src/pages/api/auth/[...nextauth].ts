@@ -45,12 +45,13 @@ export const authOptions: AuthOptions = {
                         // console.log(`USER FROM LINE 45`, user);
     
                         return {
-                            id: user._id.toString(),
+                            id: user._id,
                             name: user.first_name + ' ' + user.last_name,
                             email: user.email,
                             rol: user.rol,
                             token: token,
                             cart: user.cart,
+                            cartId: user.cart._id,
                             last_connection: user.last_connection
                         }
                     } catch (error) {
@@ -82,6 +83,7 @@ export const authOptions: AuthOptions = {
                 token.rol = user.rol;
                 token.token = user.token;
                 token.cart = user.cart;
+                token.cartId = user.cartId;
             }
             // console.log(`TOKEN FROM JWT CALLBACK`, token);
             return token;
@@ -94,6 +96,7 @@ export const authOptions: AuthOptions = {
                 session.user.rol = token.rol;
                 session.user.token = token.token;
                 session.user.cart = token.cart;
+                session.user.cartId = token.cartId
             }
             // console.log(`SESSION DE NEXTAUTH--->`, session);
 
