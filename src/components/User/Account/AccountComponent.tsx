@@ -18,7 +18,7 @@ const AccountComponent: React.FC<Prop> = ({ user }) => {
                 <section className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-screen-lg hover:bg-gray-100 dark:border-gray-3s00 dark:bg-gray-400 dark:hover:bg-gray-500">
                     <div>
                         <div className="flex flex-row text-center">
-                            <Image className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-auto md:rounded-none md:rounded-l-lg" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" />
+                            <Image className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-auto md:rounded-none md:rounded-l-lg" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt=""/>
                             <div className="flex flex-col justify-between p-4 leading-normal w-full m-3">
                                 <div>
                                     <h3 className="text-3xl mb-4 font-bold tracking-tight text-gray-900 dark:text-white underline" >Welcome, {user.first_name} !</h3>
