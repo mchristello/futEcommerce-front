@@ -11,7 +11,7 @@ const ProductItemComponent: NextPage<Props> = ({ products }) => {
     return (
         <>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {products.map(p => {
+                {products.map((p: any) => {
                     return (
                         <Link href={`/products/${p._id}`} className="bg-white rounded-md" key={p._id}>
                             <img className="h-auto w-auto rounded-lg" src={p.thumbnail} alt="item image" />

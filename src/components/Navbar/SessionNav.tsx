@@ -25,7 +25,6 @@ const SessionNav: React.FC = () => {
     
                     const productsInCart = response.data.payload[0].products
                     setCart(productsInCart)
-                    console.log(`A VER EL CARRITOOOOOOOOOOOO`, cart);
                 }
                 fetchCart()
             }
