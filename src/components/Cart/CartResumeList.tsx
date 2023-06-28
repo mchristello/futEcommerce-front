@@ -11,9 +11,7 @@ type Props = {
 
 const CartResumeList: React.FC<Props> = ({ cart }) => {
 
-    const { data: session } = useSession()
-
-    console.log(session?.user?.cartId);
+    const mappingCart : any = cart
 
     return (
         <Card>
@@ -26,7 +24,7 @@ const CartResumeList: React.FC<Props> = ({ cart }) => {
                 </p>
             </div>
             <ul className="my-4 space-y-3">
-                { cart.map((p) => {
+                { mappingCart.map((p: any) => {
                     return (
                         <li key={p.product._id}>
                             <Link

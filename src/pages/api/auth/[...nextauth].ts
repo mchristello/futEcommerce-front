@@ -53,7 +53,7 @@ export const authOptions: AuthOptions = {
                             cart: user.cart,
                             cartId: user.cart._id,
                             last_connection: user.last_connection
-                        }
+                        } as any
                     } catch (error) {
                         console.log(`CATCH IN TOKEN CONDITIONAL--->`, error)
                         
@@ -65,7 +65,7 @@ export const authOptions: AuthOptions = {
                     // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
                 }
             }
-        })
+        }) 
     ],
     session: {
         strategy: "jwt",

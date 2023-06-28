@@ -11,19 +11,21 @@ type Props = {
 }
 
 type Response = {
-    payload: Cart
+    payload: Cart[]
 }
 
 const CartReview: NextPage<Props> = ({ cart }) => {
 
-    // console.log(`FROM CARTREVIEW`, cart);
+    const userCart: any = cart
+
+    console.log(`VEAMOS EL USERCART`, userCart);
 
     return (
         <>
             <Head>
                 <title>Cart Review</title>
             </Head>
-            <CartReviewComponent cart={cart[0]} />
+            <CartReviewComponent cart={userCart} />
         </>
     )
 }
@@ -39,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async(context) => {
         })
 
         return {
-            props: { cart: request.payload }
+            props: { cart: request.payload[0] }
         }
     }
 

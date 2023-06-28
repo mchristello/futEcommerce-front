@@ -8,7 +8,7 @@ type Props = {
 }
 
 // Crear el contexto
-export const CartContext = createContext<CartContextProvider | undefined>(undefined);
+export const CartContext = createContext<CartContextProvider | null>(null);
 
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
@@ -19,9 +19,9 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     useEffect(() => {
         try {
             if(session && session?.user?.cart) {
+
                 const fetchCart = async () => {
-                    
-                    const response = await connectNextURL.get(`/carts/${session.user?.cart._id}`, {
+                    const response = await connectNextURL.get(`/carts/${session.user?.cartId}`, {
                         headers: {
                             Authorization: `Bearer ` + session.user?.token
                         }
@@ -41,7 +41,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     }, [session, setCartItems])
 
     const addProduct = async (pid: Product["_id"]) => {
-        const { data: result } = await connectNextURL.post(`/carts/${session?.user?.cart._id}/products/${pid}`, {pid}, {
+        const { data: result } = await connectNextURL.post(`/carts/${session?.user?.cartId}/products/${pid}`, {pid}, {
             headers: {
                 Authorization: "Bearer " + session?.user?.token
             }
@@ -53,7 +53,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     };
 
     const deleteProd = async (pid: Product["_id"]) => {
-        const { data: result } = await connectNextURL.delete(`/carts/${session?.user?.cart._id}/products/${pid}`, {
+        const { data: result } = await connectNextURL.delete(`/carts/${session?.user?.cartId}/products/${pid}`, {
             headers: {
                 Authorization: "Bearer " + session?.user?.token
             }
@@ -66,7 +66,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     };
 
     const emptyCart = async () => {
-        const { data: result } = await connectNextURL.delete(`/carts/${session?.user?.cart._id}`, {
+        const { data: result } = await connectNextURL.delete(`/carts/${session?.user?.cartId}`, {
             headers: {
                 Authorization: "Bearer " + session?.user?.token
             }
@@ -76,7 +76,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     };
 
     const purchase = async () => {
-        const { data: result } = await connectNextURL.post(`/carts/${session?.user?.cart}/purchase`, {
+        const { data: result } = await connectNextURL.post(`/carts/${session?.user?.cartId}/purchase`, {
             headers: {
                 Autorization: "Bearer " + session?.user?.token
             }

@@ -11,12 +11,13 @@ type Props = {
 }
 
 const CartReviewComponent: React.FC<Props> = ({ cart }) => {
-    // console.log(`CARTREVIEWCOMPONENT`, cart.products[0].product);
-    // const { _id, description, thumbnail, price } = cart.products[0].product
-    const { emptyCart, deleteProd } = useCart()
+
+    const { emptyCart, deleteProd } = useCart();
+    const newCart: any = cart;
+
     return (
         <section id="cart_section">
-            {cart.products.length > 0 ? 
+            {newCart.products.length > 0 ? 
                 <table className="table-auto bg-slate-200/75 text-center w-[80vw] m-10 rounded-md text-xl">
                     <thead>
                         <tr>
@@ -29,14 +30,14 @@ const CartReviewComponent: React.FC<Props> = ({ cart }) => {
                         </tr>
                     </thead>
                     <tbody>
-                    { cart.products.map((p) => {
+                    { newCart.products.map((p: any) => {
                         return (
                                 <tr key={p.product._id}>
                                     <td><img width="60" src={p.product.thumbnail} className='m-auto rounded-xl my-2' alt='product image'/></td>
                                     <th scope="row"> {p.product.description} </th>
                                     <td>$ {p.product.price}</td>
                                     <td>{p.quantity}</td>
-                                    <td><Button className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm text-center mx-auto"><Link href={`/products/${p.product._id}`}>Go to Detail</Link></Button></td>
+                                    <td><Button className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm text-center mx-auto"><Link href={`/products/${p.product._id}`}>To Detail</Link></Button></td>
                                     <td><Button className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm text-center mx-auto" id="delete_btn" onClick={() => deleteProd(p.product._id)}>DELETE</Button></td>
                                 </tr>
                         )
@@ -53,7 +54,7 @@ const CartReviewComponent: React.FC<Props> = ({ cart }) => {
                             </td>
                             <td>
                                 <Button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm text-center my-10 mx-auto" id="empty_cart" onClick={() => emptyCart()}>
-                                    Empty Cart!
+                                    Delete All.
                                 </Button>
                             </td>
                         </tr>

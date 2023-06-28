@@ -10,21 +10,14 @@ import { connectBack } from "utils/serverConnection";
 type Props = {
     products: Product[]
     totalPages: number
+    onNextPage: () => void;
+    onPrevPage: () => void;
 }
 
-// interface Prod {
-//     products: Product[]
-// }
-
-
 const ProductsPage: NextPage<Props> = ({ products, totalPages }) => {
-    // const [currentPage, setCurrentPage] = useState(1);
     const [ allProducts, setAllProducts ] = useState(products)
-    const pages = totalPages
     const router = useRouter();
     const { query } = router
-
-    console.log(`QUERY DESDE HOME`, query);
 
     const currentPage = Number(query.page) || 1;
 
@@ -42,16 +35,6 @@ const ProductsPage: NextPage<Props> = ({ products, totalPages }) => {
         });
     };
 
-    // const nextPage = () => {
-    //     setCurrentPage((prevPage) => prevPage + 1);
-    // };
-
-    // const prevPage = () => {
-    //     setCurrentPage((prevPage) => prevPage - 1);
-    // };
-
-    console.log(`CURRENT PAGE DESDE PRODUCTSPAGE`, products);
-
     return (
         <div>
             {/* Renderizar tus componentes de lista o tabla de productos */}
@@ -60,8 +43,8 @@ const ProductsPage: NextPage<Props> = ({ products, totalPages }) => {
             <PaginationComponent
                 totalPages={totalPages}
                 currentPage={currentPage}
-                onNextPage={nextPage}
-                onPrevPage={prevPage}
+                handleNextPage={nextPage}
+                handlePrevPage={prevPage}
             />
         </div>
     );

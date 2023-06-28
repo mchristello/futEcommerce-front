@@ -15,7 +15,7 @@ export interface Product {
 
 export interface Cart {
     _id: string;
-    products: Products;
+    products: Products[];
 }
 
 export interface Products {
@@ -45,23 +45,20 @@ export interface Ticket {
     purchased_datetime: Date;
 }
 
-export interface Paginate {
+export interface PaginationProps {
     totalDocs: number;
-    offset: number;
-    limit: number;
     totalPages: number;
     page: number;
-    pagingCounter: number;
-    hasPrevPage: boolean;
-    hasNextPage: boolean;
     prevPage: number;
     nextPage: number;
+    onNextPage: () => void;
+    onPrevPage: () => void;
 }
 
 export interface CartContextProvider {
     cartItems: number;
-    addProduct: (pid: Product["_id"]) => AxiosResponse;
-    deleteProd: (pid: Product["_id"]) => AxiosResponse;
-    emptyCart: () => AxiosResponse;
+    addProduct: (pid: Product["_id"]) => any;
+    deleteProd: (pid: Product["_id"]) => any;
+    emptyCart: () => any;
     purchase: () => void;
 }
