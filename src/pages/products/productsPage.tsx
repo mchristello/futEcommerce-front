@@ -15,7 +15,6 @@ type Props = {
 }
 
 const ProductsPage: NextPage<Props> = ({ products, totalPages }) => {
-    const [ allProducts, setAllProducts ] = useState(products)
     const router = useRouter();
     const { query } = router
 
@@ -53,8 +52,6 @@ const ProductsPage: NextPage<Props> = ({ products, totalPages }) => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     const page = query.page || 1;
     const limit = 10;
-
-    console.log(`QUERY DESDE GETSERVERSIDEPROPS`, page);
 
     try {
         const { data: response } = await connectBack.get(`api/products?page=${page}&limit=${limit}&query=&sort=`);

@@ -21,32 +21,6 @@ const onAdd = (num: number) => {
 const Productdetail: NextPage<Props> = ({ product }) => {
 
     return (
-        // <>
-        //     <div className="flex justify-center items-evenly h-full w-[1000px] bg-white gap-4 border-2">
-        //         <img
-        //             src={thumbnail}
-        //             width={100}
-        //             height={100}
-        //             alt={title}
-        //             className="max-h-[400px] w-full max-w-[400px] bg-white p-10 self-center border-2"
-        //         />
-        //         <div className="flex flex-col items-start justify-center max-w-[700px] gap-8 p-4 bg-green">
-        //             <h2 className="text-l font-bold self-center">{title}</h2>
-        //             <span className="text-m font-bold items-center justify-center">
-        //                 $ {price}
-        //             </span>
-        //             <div className="flex gap-2">
-        //                 {/* <ProductQtyComponent initial={1} onAdd={onAdd} /> */}
-        //                 {/* <AddToCartButton
-        //                     pid={product._id}
-        //                     className="text-s bg-font w-full rounded text-white p-2 px-4 uppercase shadow-xl font-bold hover:bg-footer"
-        //                 /> */}
-        //             </div>
-        //             <p className="uppercase text-justify text-s">{description}</p>
-        //             <p className="uppercase text-justify text-s">{stock}</p>
-        //         </div>
-        //     </div>
-        // </>
         <>
             <Head>
                 <title>Product Detail</title>
