@@ -2,6 +2,7 @@
 
 import { Card } from 'flowbite-react';
 import { Cart } from "interfaces/interfaces";
+import Image from 'next/image';
 import Link from 'next/link';
 
 type Props = {
@@ -31,7 +32,7 @@ const CartResumeList: React.FC<Props> = ({ cart }) => {
                                 className="group flex items-center rounded-lg bg-gray-50 p-3 text-base font-bold text-gray-900 hover:bg-gray-100 hover:shadow dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"
                                 href={`/products/${p.products._id}`}
                             >
-                                <img src={p.products.thumbnail} alt='Product image' className="w-10" />
+                                <Image src={p.products.thumbnail} alt='Product image' className="w-10" />
                                 <span className="ml-3 flex-1 whitespace-nowrap">
                                     {p.products.description}
                                 </span>

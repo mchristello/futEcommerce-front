@@ -1,5 +1,6 @@
 import AddButton from "components/Multi/AddButtton";
 import { Product } from "interfaces/interfaces";
+import Image from "next/image";
 import Link from "next/link";
 
 
@@ -16,7 +17,7 @@ const ProductDetailComponent: React.FC<Prop> = ({ product }) => {
     return (
         <section>
             <div className="w-full max-w-3xl bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <img className="p-8 rounded-t-lg w-[40rem]" src={thumbnail} alt="product image" />
+                <Image className="p-8 rounded-t-lg w-[40rem]" src={thumbnail} alt="product image" />
                 <div className="px-5 pb-5">
                         <h5 className="text-xl font-semibold tracking-widest text-gray-900 dark:text-white mb-4">{description}</h5>
                     <Link href="#">

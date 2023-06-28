@@ -1,6 +1,7 @@
 // import AddButton from "components/Multi/AddButtton";
 import { Product } from "interfaces/interfaces"
 import { NextPage } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
@@ -41,7 +42,7 @@ const ProductItemComponent: NextPage<Props> = ({ products }) => {
                 {products.map(p => {
                     return (
                         <Link href={`/products/${p._id}`} className="bg-white rounded-md" key={p._id}>
-                            <img className="h-auto w-auto rounded-lg" src={p.thumbnail} alt="item image" />
+                            <Image className="h-auto w-auto rounded-lg" src={p.thumbnail} alt="item image" />
                             <div className="m-4 flex justify-between">
                                 <div>
                                     <div className="text-m font-bold text-gray-700 mb-5">
