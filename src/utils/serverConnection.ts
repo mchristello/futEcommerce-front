@@ -11,5 +11,5 @@ export const connectBack = axios.create({
 })
 
 export const connectNextURL = axios.create({
-    baseURL: `${process.env.NEXTAUTH_URL || ""}/api`
+    baseURL: `${process.env.NEXT_API_URL || ""}/api`
 })

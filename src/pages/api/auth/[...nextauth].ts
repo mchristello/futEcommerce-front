@@ -22,8 +22,9 @@ export const authOptions: AuthOptions = {
                     password: credentials?.password
                 })
                 .catch((err) => {
-                    if(err) {
+                    if (err) {
                         console.log(`ERROR IN AUTHORIZE LOGIN--->`, err.response.data.message);
+                        throw new Error("Failed to log in");
                     }
                 })
 
@@ -41,7 +42,7 @@ export const authOptions: AuthOptions = {
                             }
                         });
                         
-                        const user = response.data.payload;
+                        const user = response?.data.payload;
                         // console.log(`USER FROM LINE 45`, user);
     
                         return {
@@ -56,7 +57,7 @@ export const authOptions: AuthOptions = {
                         } as any
                     } catch (error) {
                         console.log(`CATCH IN TOKEN CONDITIONAL--->`, error)
-                        
+                        throw new Error("Failed to log in");
                     }
                     
                 } else {
