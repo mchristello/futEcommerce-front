@@ -25,7 +25,7 @@ const Home: NextPage<Props> = ({ initialProducts, totalPages }) => {
   const fetchData = async (page: number) => {
     try {
       const { data: response } = await axios.get(
-        `http://localhost:8080/api/products?page=${page}&limit=${limit}&query=&sort=`, {
+        `https://backendpf-production.up.railway.app/api/products?page=${page}&limit=${limit}&query=&sort=`, {
           headers: {'X-Requested-With': 'XMLHttpRequest'}
         }
       );
@@ -89,9 +89,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
               totalPages: response.payload.totalPages,
           },
       };
-  } catch (error) {
-      console.error('Error fetching products:', error);
-{}
+  } catch (error: any) {
+      console.error('Error fetching products:', error.message);
       return {
           props: {
               initialProducts: [],

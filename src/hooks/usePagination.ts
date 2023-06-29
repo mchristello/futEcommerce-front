@@ -30,7 +30,7 @@
 //     const fetchData = async (page: number) => {
 //         try {
 //             const { data } = await axios.get<PaginationData<T>>(
-//                 `http://localhost:8080/api/products?page=${page}&limit=${limit}&query=&sort=`
+//                 `https://backendpf-production.up.railway.app/api/products?page=${page}&limit=${limit}&query=&sort=`
 //             , {
 //                 headers: {'X-Requested-With': 'XMLHttpRequest'}
 //             });
