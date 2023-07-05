@@ -40,7 +40,7 @@ body {
     )
     rgb(var(--background-start-rgb)); */
     /* background: url(https://pbs.twimg.com/media/CywU32jUQAAdebF.jpg:large); */
-    background-color: rgb(191, 190, 242);
+    background: linear-gradient(90deg, #bfbef2, #c2a5a3, #e3e4a788);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -66,4 +66,11 @@ body {
 .underline_effect:hover {
   background-size: 0 3px, 100% 3px;
   color: rgb(5, 111, 138);
+}
+
+.cart_preview {
+  background: rgba( 255, 255, 255, 0.2 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 8px );
+  border-radius: 10px;
 }

@@ -31,14 +31,12 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
                     setCartItems(productsInCart)
                     // console.log(`useEffect CARTITEMS----------->`, cartItems);
                 }
-    
                 fetchCart()
-                
             }
         } catch (error:any) {
             console.log(`ERROR EN USE EFFECT DE CARTCONTEXT`, error);
         }
-    }, [session, setCartItems])
+    }, [session, setCartItems, cartItems]);
 
     const addProduct = async (pid: Product["_id"]) => {
         const { data: result } = await connectNextURL.post(`/carts/${session?.user?.cartId}/products/${pid}`, {pid}, {
@@ -84,7 +82,6 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
 
         return result;
     };
-
 
     const data = {
         cartItems,

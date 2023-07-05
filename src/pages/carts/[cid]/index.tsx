@@ -18,8 +18,6 @@ const CartReview: NextPage<Props> = ({ cart }) => {
 
     const userCart: any = cart
 
-    console.log(`VEAMOS EL USERCART`, userCart);
-
     return (
         <>
             <Head>

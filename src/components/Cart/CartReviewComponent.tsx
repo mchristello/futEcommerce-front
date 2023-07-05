@@ -3,7 +3,10 @@
 import { Button, Card } from 'flowbite-react';
 import { useCart } from 'hooks/useCart';
 import { Cart } from "interfaces/interfaces"
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { connectNextURL } from 'utils/serverConnection';
 
 
 type Props = {
@@ -12,14 +15,42 @@ type Props = {
 
 const CartReviewComponent: React.FC<Props> = ({ cart }) => {
 
+    const { data: session } = useSession()
+    const [ cartTotal, setCartTotal ] = useState<number>(0)
     const { emptyCart, deleteProd } = useCart();
     const newCart: any = cart;
 
+
+    useEffect(() => {
+        try {
+            const fetchCart = async () => {
+                const response = await connectNextURL.get(`/carts/${session?.user?.cartId}`, {
+                    headers: {
+                        Authorization: "Bearer " + session?.user?.token
+                    }
+                })
+
+                const products = response.data.payload[0].products
+                const total: any = products.map((p: any) => {
+                    let amount = p.product.price * p.quantity;
+                    return amount
+                })
+
+                const acc = total.reduce((acc: number, acum: number) => acc + acum, 0)
+                setCartTotal(acc)
+            }
+            fetchCart()
+        } catch (error: any) {
+            console.log(`Error in USEEFFECT for carTotal`, error.message);
+        }
+    }, [setCartTotal])
+
     return (
-        <section id="cart_section">
+        <section id="cart_section" className='m-10'>
+            <h3 className='text-4xl font-semibold text-center'> My Cart! </h3>
             {newCart.products.length > 0 ? 
                 <table className="table-auto bg-slate-200/75 text-center w-[80vw] m-10 rounded-md text-xl">
-                    <thead>
+                    <thead className='mt-10'>
                         <tr>
                             <th scope="col">Image</th>
                             <th scope="col">Title</th>
@@ -45,7 +76,7 @@ const CartReviewComponent: React.FC<Props> = ({ cart }) => {
                         <tr className="m-10">
                             <td><h4><strong>TOTAL AMOUNT</strong></h4></td>
                             <td> --------------------------------------- </td>
-                            <td><h4>Total :  $  .-</h4></td>
+                            <td><h4>Total: $<b>{cartTotal}</b>.-</h4></td>
                             <td> ---------- </td>
                             <td>
                                 <Button className="text-black bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm text-center my-10 mx-auto" value={cart._id} id="purchase">

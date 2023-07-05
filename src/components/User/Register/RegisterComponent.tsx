@@ -29,12 +29,12 @@ const RegisterComponent: React.FC = () => {
 
     return (
         <section id="register_section">
-            <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 rounded-xl backdrop-blur-sm bg-white/40 w-fit">
-                <h2 className="mt-5 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
+            <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 rounded-xl backdrop-blur-sm bg-white/40 mt-10">
+                <h2 className="m-5 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
                     Create Your Account
                 </h2>
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm w-full">
-                    <form className="space-y-12" onSubmit={handleSubmit(onSubmit)}>
+                <div className="m-10 sm:mx-auto sm:w-full sm:max-w-lg">
+                    <form className="space-y-12 w-fit" onSubmit={handleSubmit(onSubmit)}>
                         <div className="flex flex-row">
                             <div className="flex flex-col">
                                 <label htmlFor="firstName" className="block text-md font-medium leading-6 text-gray-900">

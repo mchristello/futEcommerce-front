@@ -4,12 +4,9 @@ import { connectAPI } from "utils/serverConnection";
 
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-    // console.log(`REVISANDO QUE TRAE EL HEADER`, req.headers.authorization);
     const { cid } = req.query;
-    // console.log(`QUERY DE CART ID`, cid);
-
     const authToken = req.headers.authorization
-    // console.log(`A VER EL AUTHTOKEN ------------------>`, authToken);
+
     if (req.method === "GET") {
         try {
             const { data: response } = await connectAPI.get(`/carts/${cid}`, {
@@ -18,7 +15,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 }
             })
 
-            console.log(`${req.method} DESDE PAGES ${req.url}`, response);
+            const time = new Date().toLocaleString()
+            console.log(`${req.method} DESDE PAGES ${req.url}, at ${time}`, response);
 
             return res.status(200).send(response)
         } catch (error:any) {
