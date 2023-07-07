@@ -1,4 +1,4 @@
-import { CartContextProvider, Product } from 'interfaces/interfaces';
+import { CartContextProvider, Product, Products } from 'interfaces/interfaces';
 import { useSession } from 'next-auth/react';
 import { createContext, useState, useEffect } from 'react';
 import { connectNextURL } from 'utils/serverConnection';
@@ -38,8 +38,8 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
         }
     }, [session, setCartItems, cartItems]);
 
-    const addProduct = async (pid: Product["_id"]) => {
-        const { data: result } = await connectNextURL.post(`/carts/${session?.user?.cartId}/products/${pid}`, {pid}, {
+    const addProduct = async (pid: Product["_id"], qty: Products["quantity"]) => {
+        const { data: result } = await connectNextURL.post(`/carts/${session?.user?.cartId}/products/${pid}`, {pid, qty}, {
             headers: {
                 Authorization: "Bearer " + session?.user?.token
             }

@@ -31,7 +31,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
     }, [currentPage, totalPages])
 
     return (
-        <section className="container flex flex-row m-10 justify-center w-full text-xl text-white">
+        <section className="container flex flex-row m-5 justify-center w-full text-xl text-white">
             <Button onClick={handlePrevPage} disabled={currentPage === 1} className="m-10" size="xl" gradientDuoTone="redToYellow" ><HiOutlineArrowLeft className="mr-2 h-10 w-10" /> Prev Page </Button>
             <p className="m-10 text-center" aria-label="selected">Page {currentPage} of {totalPages}</p>
             {/* <div className="flex flex-row m-10 justify-center text-center">{eachPage}</div> */}

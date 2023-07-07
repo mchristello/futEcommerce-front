@@ -61,7 +61,7 @@ const Home: NextPage<Props> = ({ initialProducts, totalPages }) => {
       <Head>
         <title>eCommerce °° by M.Ch. °°</title>
       </Head>
-      <main className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`} >
+      <main className={`flex min-h-screen flex-col items-center justify-between p-12 ${inter.className}`} >
         <ProductsListComponent products={products}/>
         <PaginationComponent 
           totalPages={totalPages}

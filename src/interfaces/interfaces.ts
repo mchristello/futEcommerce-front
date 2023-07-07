@@ -57,7 +57,7 @@ export interface PaginationProps {
 
 export interface CartContextProvider {
     cartItems: number;
-    addProduct: (pid: Product["_id"]) => any;
+    addProduct: (pid: Product["_id"], qty: Products["quantity"]) => any;
     deleteProd: (pid: Product["_id"]) => any;
     emptyCart: () => any;
     purchase: () => void;

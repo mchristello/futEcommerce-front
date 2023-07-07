@@ -16,7 +16,7 @@ const ProductsListComponent: React.FC<Props> = ({ products }) => {
                 <BsFillArrowDownCircleFill color="gray"/>
             </div>
             
-            <section className="flex flex-wrap justify-center items-center gap-7 max-w-[100vw]">
+            <section className="flex flex-wrap justify-center items-center gap-7 max-w-[90vw]">
                 <ProductItemComponent products={products} />
             </section>
         </>

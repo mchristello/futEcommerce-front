@@ -2,20 +2,20 @@ import { useState } from "react";
 
 type Props = {
     counter: number;
-    handleAddClick: () => void;
-    handleSubClick: () => void;
+    handleClickUp: () => void;
+    handleClickDown: () => void;
 };
 
 export const useCounter = (): Props => {
     const [counter, setCounter] = useState<number>(1);
 
-    const handleAddClick = () => {
+    const handleClickUp = () => {
         if (counter === 10) return;
 
         setCounter((prevCounter) => prevCounter + 1);
     };
 
-    const handleSubClick = () => {
+    const handleClickDown = () => {
         if (counter === 1) return;
 
         setCounter((prevCounter) => prevCounter - 1);
@@ -23,7 +23,7 @@ export const useCounter = (): Props => {
 
     return {
         counter,
-        handleAddClick,
-        handleSubClick,
+        handleClickUp,
+        handleClickDown,
     };
 };

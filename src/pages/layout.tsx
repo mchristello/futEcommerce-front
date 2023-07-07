@@ -1,3 +1,4 @@
+import FooterComponent from "components/Footer/FooterComponent"
 import Navbar from "components/Navbar/Navbar"
 import Head from "next/head"
 
@@ -14,9 +15,10 @@ const Layout = ({ children }: LayoutProps) => {
                 <title>Layouts Example</title>
             </Head>
             <Navbar />
-            <main className="flex flex-col items-center justify-between w-full min-h-[100vh] h-full bg-main gap-6 py-[50px]">
+            <main className="flex flex-col items-center justify-between w-full min-h-[100vh] h-full bg-main gap-6 py-[25px]">
                 {children}
             </main>
+            <FooterComponent />
         </>
 
     )

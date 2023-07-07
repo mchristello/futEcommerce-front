@@ -34,7 +34,7 @@ const LoginComponent: React.FC = () => {
                 <div className="m-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     { isLoading 
                         ? 
-                        <div className="m-auto my-8">
+                        <div className="mx-auto my-8">
                             <DotSpinner 
                                 size={60}
                                 speed={0.5} 

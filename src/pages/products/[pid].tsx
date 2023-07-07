@@ -33,14 +33,13 @@ const Productdetail: NextPage<Props> = ({ product }) => {
 export default Productdetail;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-
     const session = await getServerSession(context.req, context.res, authOptions);
 
-    if (session && session.user) {
+    // if (session && session.user) {
         const {data: product} = await connectAPI.get<RequestType>(`/products/${context.params!.pid}`,
             {
                 headers: {
-                    Authorization: `Bearer ${session.user.token}`,
+                    "Content-Type": "application/json",
                 }
             })
     
@@ -50,13 +49,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             }
         }
     }
-    return {
-        redirect: {
-            destination: '/',
-            permanent: false
-        }
-    }
-}
+    // return {
+    //     redirect: {
+    //         destination: '/',
+    //         permanent: false
+    //     }
+    // }
+// }
 
 
 

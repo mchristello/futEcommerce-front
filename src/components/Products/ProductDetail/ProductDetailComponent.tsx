@@ -1,4 +1,5 @@
 import AddButton from "components/Multi/AddButtton";
+import ProductQtyComponent from "components/Multi/ProductQtyComponent";
 import { Product } from "interfaces/interfaces";
 import Link from "next/link";
 
@@ -9,9 +10,11 @@ interface Prop {
 
 const ProductDetailComponent: React.FC<Prop> = ({ product }) => {
 
-    // console.log(`PRODUCT FROM COMPONENT`, product);
-
     const  { title, description, price, stock, _id, thumbnail, category }  = product;
+
+    const onAdd = (num: number) => {
+        return num
+    }
 
     return (
         <section>
@@ -33,7 +36,7 @@ const ProductDetailComponent: React.FC<Prop> = ({ product }) => {
                     </div>
                     <div className="flex items-center justify-between">
                         <span className="text-3xl font-bold text-gray-900 dark:text-white">${price}</span>
-                        <AddButton pid={_id} />
+                        <ProductQtyComponent initial={1} onAdd={onAdd} pid={_id} />
                     </div>
                     <p className="text-md font-light tracking-tight text-gray-400 dark:text-gray-400">Stock Available: {stock}</p>
                 </div>
