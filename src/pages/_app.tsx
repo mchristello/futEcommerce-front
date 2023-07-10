@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import Layout from './layout'
 import { CartProvider } from 'context/CartContext'
+import { UserProvider } from 'context/UserContext'
 
 export default function App({ 
   Component, 
@@ -12,11 +13,13 @@ export default function App({
   
   return (
     <SessionProvider session={session}>
-      <CartProvider>
-        <Layout >
-          <Component {...pageProps} />
-        </Layout>
-      </CartProvider>
+      <UserProvider>  
+        <CartProvider>
+          <Layout >
+            <Component {...pageProps} />
+          </Layout>
+        </CartProvider>
+      </UserProvider>
     </SessionProvider>
     )
 }
