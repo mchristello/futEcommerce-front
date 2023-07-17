@@ -33,6 +33,7 @@ export const authOptions: AuthOptions = {
                 }
 
                 const token = response.data.token
+                // console.log(`TOKEN DESDE EL LOGIN: ${token}`);
 
                 if (token) {
                     try {

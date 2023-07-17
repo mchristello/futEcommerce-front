@@ -3,6 +3,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { DotSpinner } from '@uiball/loaders'
+import Link from "next/link";
 
 type Inputs = {
     email: User['email'],
@@ -65,9 +66,9 @@ const LoginComponent: React.FC = () => {
                                         Password
                                     </label>
                                     <div className="text-sm">
-                                        <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                                        <Link href={"/users/resetPasswordLink"} className="font-semibold text-indigo-600 hover:text-indigo-500">
                                             Forgot password?
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className="mt-2">

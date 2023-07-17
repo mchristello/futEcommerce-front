@@ -62,3 +62,8 @@ export interface CartContextProvider {
     emptyCart: () => any;
     purchase: () => void;
 }
+
+export interface UserContextProvider {
+    getUsers: () => any;
+    deleteUser: (uid: User["_id"]) => any;
+}

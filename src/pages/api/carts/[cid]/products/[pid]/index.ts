@@ -5,13 +5,12 @@ import { connectAPI } from "utils/serverConnection"
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { pid, cid } = req.query
-    const productToAdd = req.body
-
-    console.log(`PRDUCTO A USAR ------------>`, req.body);
 
     const authToken = req.headers.authorization
 
     if(req.method === 'POST') {
+        const productToAdd = req.body
+        console.log(`PRDUCTO A USAR ------------>`, req.body);
         try {
             const { data: response } = await connectAPI.post(`/carts/${cid}/products/${pid}`, {...req.body}, {
                 headers: {

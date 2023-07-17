@@ -32,9 +32,14 @@ const AccountComponent: React.FC<Prop> = ({ user }) => {
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-900" ><small className="font-extralight">Your rol: {userData.rol}.</small></p>
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-900" ><strong>Your cart ID:</strong> <i className="font-extralight">{userData.cart._id}</i></p>
                                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-900" ><strong>Your User ID:</strong> <i className="font-extralight">{userData._id}</i></p>
-                                    <p className="mb-6 font-normal text-gray-700 dark:text-gray-900" >Last Connection: <i>{userData.last_connection}</i></p>
-                                    <Link className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 m-2" href="/users/updateInfo">Update Info</Link>
-                                    <Link className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 m-2" href={"/users/resetPasswordLink"}>Change Password</Link>
+                                    <p className="mb-6 font-normal text-gray-700 dark:text-gray-900" ><strong>Last Connection:</strong> <i>{userData.last_connection}</i></p>
+                                    <Link className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 m-2" href={"/users/updateInfo"}>Update <b>Info</b></Link>
+                                    <Link className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 m-2" href={"/users/resetPasswordLink"}>Change <b>Password</b></Link>
+                                    { userData.rol === 'admin' ?? 
+                                        <Link href={"/users/management"} className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 m-2">
+                                        Manage <b>Users</b>    
+                                        </Link> 
+                                    }
                                 </div>
                                 <Link className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-6" href={`/carts/${userData.cart._id}`}>Go to Cart</Link>
                             </div>

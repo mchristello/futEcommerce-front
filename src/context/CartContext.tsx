@@ -21,13 +21,13 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
             if(session && session?.user?.cart) {
 
                 const fetchCart = async () => {
-                    const response = await connectNextURL.get(`/carts/${session.user?.cartId}`, {
+                    const { data: response } = await connectNextURL.get(`/carts/${session.user?.cartId}`, {
                         headers: {
                             Authorization: `Bearer ` + session.user?.token
                         }
                     })
     
-                    const productsInCart = response.data.payload[0].products.length
+                    const productsInCart = response.payload[0].products.length
                     setCartItems(productsInCart)
                     // console.log(`useEffect CARTITEMS----------->`, cartItems);
                 }

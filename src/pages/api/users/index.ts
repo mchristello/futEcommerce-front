@@ -1,7 +1,12 @@
 import { connectAPI, connectBack } from "utils/serverConnection";
 import { NextApiRequest, NextApiResponse } from "next";
+import axios from "axios";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    const authToken = req.headers.authorization
+    const { uid } = req.query
+    console.log({authToken});
+    console.log({uid});
 
     if(req.method === 'GET') {
         try {

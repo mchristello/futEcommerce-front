@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             const { data: response } = await connectAPI.get(`/carts/${cid}`, {
                 headers: {
-                    Authorization: `Bearer` + authToken
+                    Authorization: `Bearer ${authToken}`
                 }
             })
 
@@ -29,11 +29,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             const { data: response } = await connectAPI.delete(`/carts/${cid}`, {
                 headers: {
-                    Authorization: `Bearer` + authToken
+                    Authorization: `Bearer ${authToken}`
                 }
             })
 
-            console.log(`${req.method} DESDE PAGES ${req.url}`, response);
+            const time = new Date().toLocaleString()
+            console.log(`${req.method} DESDE PAGES ${req.url}, at ${time}`, response);
 
             return res.status(200).send(response)
         } catch (error: any) {

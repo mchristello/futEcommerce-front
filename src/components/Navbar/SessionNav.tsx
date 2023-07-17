@@ -61,9 +61,11 @@ const SessionNav: React.FC = () => {
                 </Link>
                 {
                     session?.user?.rol === 'admin' ? 
+                    <>
                         <Link href="/products/addNew" className="underline_effect m-4 hover:bg-neutral-300 hover:scale-125 active:bg-sky-900 focus:outline-none focus:ring focus:ring-violet-300 rounded-md w-36">
                             <li>Add New Product.</li>
                         </Link>
+                    </>
                     : null
                 }
                 <div className="fixed top-0 right-0 p-4">

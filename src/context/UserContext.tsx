@@ -1,29 +1,45 @@
 import { createContext } from "react";
 import { connectAPI, connectNextURL } from "utils/serverConnection";
 import { useSession } from 'next-auth/react';
-import { User } from "interfaces/interfaces";
+import { User, UserContextProvider } from "interfaces/interfaces";
+import axios from "axios";
 
 type props = {
     children: React.ReactNode
 }
 
-export const UserContext = createContext({})
+export const UserContext = createContext<UserContextProvider | null>(null)
 
-export const UserProvider = ({ children }:props) => {
+export const UserProvider: React.FC<props> = ({ children }) => {
     const { data: session } = useSession();
-
+    
     const getUsers = async () => {
-        const users = await connectNextURL.get('/users', {
+        const reponse = await connectNextURL.get('/users', {
             headers: {
                 Authorization: `Bearer ${session?.user?.token}`
             }
         })
 
-        return users.data.payload
+        return reponse.data.payload
+    }
+
+    const deleteUser = async (uid: User["_id"]) => {
+        try {
+            const { data: result } = await connectNextURL.delete(`/users/${uid}`, {
+                headers: {
+                    Authorization: `Bearer ${session?.user?.token}`
+                }
+            })
+            console.log({ result });
+            return result
+        } catch (error:any) {
+            console.log(`CATCH IN USERCONTEXT AT -->`, error.message);
+        }
     }
 
     const data = {
-        getUsers
+        getUsers,
+        deleteUser
     }
 
     return (
