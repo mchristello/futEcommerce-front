@@ -30,8 +30,7 @@ const LoginComponent: React.FC = () => {
     return (
         <section id="login_section">
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 rounded-xl backdrop-blur-sm bg-white/40 mt-10">
-                <h2 className="m-5 w-[20vw] text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
-                        Sign In</h2>
+                <h2 className="m-5 w-[20vw] text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">Sign In</h2>
                 <div className="m-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     { isLoading 
                         ? 

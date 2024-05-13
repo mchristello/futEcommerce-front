@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             const { data: response } = await connectAPI.get(`/carts/${cid}`, {
                 headers: {
-                    Authorization: `Bearer ${authToken}`
+                    Authorization: authToken
                 }
             })
 

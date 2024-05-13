@@ -1,4 +1,4 @@
-import ResetPasswordLinkComponent from "components/User/RestorePass/ResetPasswordLinkComponent";
+import ResetPasswordLinkComponent from "components/User/ResetPasswordLinkComponent";
 import { NextPage } from "next";
 import Head from "next/head";
 

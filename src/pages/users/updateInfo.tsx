@@ -1,28 +1,28 @@
-import ManageUsersComponent from "components/User/ManageUsersComponent";
+import UpdateInfoComponent from "components/User/UpdateInfoCiomponent";
 import { User } from "interfaces/interfaces";
 import { GetServerSideProps, NextPage } from "next";
 import { getServerSession } from "next-auth";
 import Head from "next/head";
 import { authOptions } from "pages/api/auth/[...nextauth]";
-import { connectAPI } from "utils/serverConnection";
+import { connectBack } from "utils/serverConnection";
 
-interface Prop {
-    users: User[]
+type Prop = {
+    user: User
 }
 
 type Response = {
-    payload: User[];
+    payload: User
 }
 
-const ManageUsersPage: NextPage<Prop> = ({ users }) => {
+const UpdateInfo: NextPage<Prop> = ({ user }) => {
 
     return (
-        <section>
+        <>
             <Head>
-                <title>Manage User Accounts</title>
+                <title>Update User Info</title>
             </Head>
-            <ManageUsersComponent users={users}/>
-        </section>
+            <UpdateInfoComponent user={user} />
+        </>
     )
 }
 
@@ -31,29 +31,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     try {
         if (session && session.user) {
-            const response = await connectAPI.get('/users', {
+            const response = await connectBack.get<Response>('/api/users/current', {
                 headers: {
-                    Authorization: 'Bearer ' + session.user.token
+                    Authorization: `Bearer ${session.user.token}`
                 }
             })
-            
+
             return {
                 props: {
-                    users: response.data.payload
+                    user: response.data.payload
                 }
             }
         }
-        
-    } catch (error: any) {
-        console.log(`ERROR EN MANAGMENT -->`, error.message);
+    } catch (error) {
+        console.log(error);
     }
 
     return {
         redirect: {
-            destination: "/users/account",
+            destination: '/users/account',
             permanent: false
         }
     }
 }
 
-export default ManageUsersPage;
+export default UpdateInfo

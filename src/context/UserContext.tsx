@@ -30,7 +30,6 @@ export const UserProvider: React.FC<props> = ({ children }) => {
                     Authorization: `Bearer ${session?.user?.token}`
                 }
             })
-            console.log({ result });
             return result
         } catch (error:any) {
             console.log(`CATCH IN USERCONTEXT AT -->`, error.message);

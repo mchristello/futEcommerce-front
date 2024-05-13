@@ -18,8 +18,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
 
     useEffect(() => {
         try {
-            if(session && session?.user?.cart) {
-
+            if(session?.user?.cart) {
                 const fetchCart = async () => {
                     const { data: response } = await connectNextURL.get(`/carts/${session.user?.cartId}`, {
                         headers: {
@@ -29,7 +28,6 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     
                     const productsInCart = response.payload[0].products.length
                     setCartItems(productsInCart)
-                    // console.log(`useEffect CARTITEMS----------->`, cartItems);
                 }
                 fetchCart()
             }

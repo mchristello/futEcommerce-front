@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "pages/api/auth/[...nextauth]";
-import RegisterComponent from "components/User/Register/RegisterComponent";
+import RegisterComponent from "components/User/RegisterComponent";
 import Head from "next/head";
 
 

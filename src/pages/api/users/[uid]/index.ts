@@ -11,18 +11,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if(req.method === "DELETE") {
         try {
-            // const { data: response } = await connectAPI.delete(`/users/${uid}`, {
-            //     headers: {
-            //         Authorization: authToken // TODO: No me toma el token ??????????????!!!!!!!!!!!!
-            //     }
-            // })
-            const { data: response } = await axios.delete(`http://localhost:8080/api/users/${uid}`, {
+            const { data: response } = await connectAPI.delete(`/users/${uid}`, {
                 headers: {
                     Authorization: authToken // TODO: No me toma el token ??????????????!!!!!!!!!!!!
                 }
             })
+            // const { data: response } = await axios.delete(`http://localhost:8080/api/users/${uid}`, {
+            //     headers: {
+            //         Authorization: authToken // TODO: No me toma el token ??????????????!!!!!!!!!!!!
+            //     }
+            // })
 
-            console.log(`RESPONSE FROM ${req.method} at ${req.url}`, response);
+            console.log(`RESPONSE FROM ${req.method} at ${req.url}`);
 
             return res.status(200).send(response)
         } catch (error: any) {

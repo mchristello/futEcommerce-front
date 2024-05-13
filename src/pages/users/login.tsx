@@ -1,4 +1,4 @@
-import LoginComponent from "components/User/Login/LoginComponent"
+import LoginComponent from "components/User/LoginComponent"
 import { GetServerSideProps, NextPage } from "next";
 import { getServerSession } from "next-auth";
 import Head from "next/head";

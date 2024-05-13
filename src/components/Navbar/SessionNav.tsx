@@ -17,9 +17,10 @@ const SessionNav: React.FC = () => {
         try {
             if(session && session?.user?.cart) {
                 const fetchCart = async () => {
+                    
                     const response = await connectNextURL.get(`/carts/${session.user?.cartId}`, {
                         headers: {
-                            Authorization: `Bearer ` + session.user?.token
+                            Authorization: `Bearer ${session.user?.token}`
                         }
                     })
     
@@ -29,7 +30,7 @@ const SessionNav: React.FC = () => {
                 fetchCart()
             }
         } catch (error:any) {
-            console.log(`ERROR EN USE EFFECT DE SESSIONNAV`, error);
+            console.log(`ERROR EN USE EFFECT DE SESSIONNAV`, error.message);
         }
     }, [session, setCart])
     
