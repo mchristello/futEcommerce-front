@@ -1,4 +1,4 @@
-import NewPasswordComponent from "components/User/RestorePass/NewPasswordComponent";
+import NewPasswordComponent from "../../../../../components/User/NewPasswordComponent";
 import { NextPage } from "next";
 import Head from "next/head";
 
